@@ -205,7 +205,7 @@ NSString *BWQuincyLocalize(NSString *stringToken) {
     
     // temporary directory for crashes grabbed from PLCrashReporter
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    _crashesDir = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"/crashes/"];
+    _crashesDir = [[[paths objectAtIndex:0] stringByAppendingPathComponent:@"/crashes/"] copy];
     
     if (![_fileManager fileExistsAtPath:_crashesDir]) {
       NSDictionary *attributes = [NSDictionary dictionaryWithObject: [NSNumber numberWithUnsignedLong: 0755] forKey: NSFilePosixPermissions];
